@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system>
+
+	<!--  role表示权限， 不填时表示不登陆可访问， 填写user时表示登录可访问 -->
+	<!--  log表示是否记录，  填写true时表示进行记录-->
+	
+	<module name="用户公共模块">
+		<authority name="根据IP确定国家和区号" uri="/user.act" cmd="getCountry" roles="" log="true" />
+		<authority name="判断用户是否首次登陆" uri="/user.act" cmd="isFirstTrade" roles="" log="true" />	
+	</module>
+	
+	<module name="用户注册模块">
+		<authority name="生成图片验证码" uri="/useRegist.act" cmd="createValidateCode" roles="" log="true" />
+		<authority name="手机注册获取验证码" uri="/useRegist.act" cmd="phoneRegister" roles="" log="true" />
+		<authority name="手机注册确认" uri="/useRegist.act" cmd="activePhone" roles="" log="true" />
+		<authority name="邮箱注册获取验证码" uri="/useRegist.act" cmd="emailRegister" roles="" log="true" />
+		<authority name="邮箱注册确认" uri="/useRegist.act" cmd="activeEmail" roles="" log="true" />
+	</module>
+	
+	<module name="用户登陆模块">
+		<authority name="用户登陆确认" uri="/userLogin.act" cmd="login" roles="" log="true" />
+		<authority name="登陆获取手机验证码" uri="/userLogin.act" cmd="checkLoginAuthenticationSendMessage" roles="" log="true" />
+		<authority name="登录认证确认" uri="/userLogin.act" cmd="checkLoginAuthentication" roles="" log="true" />
+		<authority name="登陆忘记密码" uri="/userLogin.act" cmd="forgetLoginPassword" roles="" log="true" />
+		<authority name="据账户获取手机验证码" uri="/userLogin.act" cmd="getCodeByAccount" roles="" log="true" />
+		<authority name="登陆验证新密码" uri="/userLogin.act" cmd="applyChangeLoginPassword" roles="" log="true" />
+		<authority name="退出登陆" uri="/userLogin.act" cmd="logout" roles="user" log="true" />		
+	</module>
+	
+	<module name="用户安全信息模块">
+		<authority name="获取总资产" uri="/userSafe.act" cmd="showTotalAssert" roles="user" log="true" />
+		<authority name="获取综合信息" uri="/userSafe.act" cmd="showCompInfo" roles="user" log="true" />
+		<authority name="验证昵称是否可用" uri="/userSafe.act" cmd="checkNickname" roles="user" log="true" />
+		<authority name="设置昵称及资金密码" uri="/userSafe.act" cmd="setNicknameAndFundPwd" roles="user" log="true" />
+		<authority name="绑定手机获取验证码" uri="/userSafe.act" cmd="initPhoneBind" roles="user" log="true" />
+		<authority name="绑定手机确认" uri="/userSafe.act" cmd="bindPhoneByCode" roles="user" log="true" />
+		<authority name="绑定邮箱初始化" uri="/userSafe.act" cmd="initEmailBind" roles="user" log="true" />
+		<authority name="绑定邮箱获取邮箱验证码" uri="/userSafe.act" cmd="getEmailCodeByEmail" roles="user" log="true" />
+		<authority name="绑定邮箱获取手机验证码" uri="/userSafe.act" cmd="getPhoneCode" roles="user" log="true" />
+		<authority name="绑定邮箱确认" uri="/userSafe.act" cmd="bindEmailByCode" roles="user" log="true" />
+		<authority name="修改登陆密码" uri="/userSafe.act" cmd="changePwdByOldPwd" roles="user" log="true" />
+		<authority name="修改资金密码初始化" uri="/userSafe.act" cmd="initFundPwdChange" roles="user" log="true" />
+		<authority name="修改资金密码获取邮箱验证码" uri="/userSafe.act" cmd="getEmailCode" roles="user" log="true" />
+		<authority name="修改资金密码确认" uri="/userSafe.act" cmd="changeFundPwd" roles="user" log="true" />
+		<authority name="绑定谷歌初始化" uri="/userSafe.act" cmd="initGoogleBind" roles="user" log="true" />
+		<authority name="绑定谷歌确认" uri="/userSafe.act" cmd="bindGoogleKey" roles="user" log="true" />		
+	</module>
+	
+	<module name="用户实名认证模块">
+		<authority name="实名认证" uri="/userRealAuthen.act" cmd="uploadInfo" roles="user" log="true" />
+		<authority name="查看失败理由" uri="/userRealAuthen.act" cmd="getReason" roles="user" log="true" />
+	</module>
+	
+	<module name="用户账户模块">
+		<authority name="支付方式初始化" uri="/userPayMethod.act" cmd="initUserPayMethod" roles="user" log="" />
+		<authority name="绑定支付方式" uri="/userPayMethod.act" cmd="bindUserPayMethod" roles="user" log="true" />
+		<authority name="根据卡号确定银行" uri="/userPayMethod.act" cmd="IdentifyBankByCard" roles="user" log="" />
+		<authority name="更改支付方式查询" uri="/userPayMethod.act" cmd="getUserPayMethod" roles="user" log="true" />
+	</module>
+	
+	<module name="用户图片模块">
+		<authority name="图片上传" uri="/userImg.act" cmd="uploadPic" roles="user" log="true" />
+	</module>
+	
+	
+	
+	
+	
+	
+	<!--报价单  -->
+	<module name="报价单模块">
+		<authority name="获取大盘信息" uri="/quoteorder.act" cmd="getDefaultDeepenDatas" roles="" log="true"  />
+		<authority name="下买入订单" uri="/quoteorder.act" cmd="placeBuyQuoteOrder" roles="" log="true"  />
+		<authority name="下卖出订单" uri="/quoteorder.act" cmd="placeSellQuoteOrder" roles="" log="true"  />
+		<authority name="撤销订单" uri="/quoteorder.act" cmd="canceQuotelOrder" roles="" log="true"  />
+		<authority name="获取报价订单列表" uri="/quoteorder.act" cmd="getQuoteOrderList" roles="" log="true"  />
+	</module>
+	<!-- 交易记录模块 -->
+	<module name="交易模块">
+		<authority name="添加报价订单" uri="/trade.act" cmd="saveTradeLog" roles="" log="true"  />
+		<authority name="交易订单列表" uri="/trade.act" cmd="getTradeLogList" roles="" log="true"  />
+		<authority name="查看订单详情" uri="/trade.act" cmd="getOrderDetail" roles="" log="true"  />
+		<authority name="修改订单" uri="/trade.act" cmd="updateOrder" roles="" log="true"  />
+		<authority name="添加投诉信息" uri="/trade.act" cmd="insertComplain" roles="" log="true"  />
+		<authority name="查看投诉详情" uri="/trade.act" cmd="getComplainResultDetail" roles="" log="true"  />
+		<authority name="撤销投诉 "    uri="/trade.act" cmd="cancelComplain" roles="" log="true"  />
+		<authority name="获取市场货币" uri="/trade.act" cmd="getCoinMarket" roles="" log="true"  />	
+	</module>
+	<!--市场行情相关  -->
+	<module name="市场行情">
+		<authority name="获取市场行情"   uri="/market.act" cmd="getMarketCoinInfo" roles="" log="true" />
+		<authority name="获取站内信信息"   uri="/market.act" cmd="getMessagelist" roles="" log="true" />
+		<authority name="检查站内信是否有更新"   uri="/market.act" cmd="checkMessage" roles="" log="true" />
+		<authority name="查看站内信详情"   uri="/market.act" cmd="getMessageDetail" roles="" log="true" />	
+	</module>
+	
+	
+	<module name="用户模块">
+		<authority name="判断邀请人"  uri="/user.act"  cmd="checkInviter" roles="" log="" />
+		<authority name="注册用户"  uri="/user.act"  cmd="registerUser" roles="" log="true" />		
+		<authority name="重发邀请码"  uri="/user.act"  cmd="reSendActiveCode" roles="" log="true" />	
+		<authority name="激活用户"  uri="/user.act"  cmd="activeUser" roles="" log="true" />					
+		<authority name="登陆"  uri="/user.act"  cmd="login" roles="" log="" />					
+		<authority name="获取用户信息" uri="/user.act" cmd="getUserInfo" roles="" log="" />
+		<authority name="申请修改密码"  uri="/user.act"  cmd="applyChangePassword" roles="" log="true" />					
+		<authority name="验证申请码"  uri="/user.act"  cmd="changePwdByCode" roles="" log="true" />					
+		<authority name="提交密码修改"  uri="/user.act"  cmd="rePasswordForNewPwd" roles="" log="true" />					
+		<authority name="使用旧密码修改密码"  uri="/user.act"  cmd="changePwdByOld" roles="user" log="true" />	
+		<authority name="初始化资金密码" uri="/user.act" cmd="initFundPwd" roles="user" log="true" />
+		<authority name="修改资金密码" uri="/user.act" cmd="changeFundPwd" roles="user" log="true" />
+		<authority name="申请绑定手机" uri="/user.act" cmd="initMobileBind" roles="user" log="true" />
+		<authority name="初始化绑定手机" uri="/user.act" cmd="initBindMobile" roles="user" log="true" />
+		<authority name="换绑手机发旧验证码" uri="/user.act" cmd="applyChangeMobileByOld" roles="user" log="true" />
+		<authority name="换绑手机发新验证码" uri="/user.act" cmd="applyChangeMobile" roles="user" log="true" />
+		<authority name="绑定新手机" uri="/user.act" cmd="changeMobile" roles="user" log="true" />
+		<authority name="申请谷歌验证码" uri="/user.act" cmd="initGoogleAuth" roles="user" log="true" />
+		<authority name="绑定谷歌验证码" uri="/user.act" cmd="initBindGoogleAuth" roles="user" log="true" />
+		<authority name="申请修改谷歌验证码" uri="/user.act" cmd="applyGoogleAuth" roles="user" log="true" />
+		<authority name="修改谷歌验证码" uri="/user.act" cmd="changeGoogleAuth" roles="user" log="true" />
+		<authority name="修改安全等级获取验证码" uri="/user.act" cmd="sendMessageForSafeLevel" roles="user" log="true" />
+		<authority name="修改安全等级" uri="/user.act" cmd="changeSafeLevel" roles="user" log="true" />
+		<authority name="更新用户昵称" uri="/user.act" cmd="updateUserBaseInfo" roles="user" log="true" />
+		<authority name="申请API密钥对" uri="/user.act" cmd="sendMobileCreateApiKey" roles="user" log="true"  />
+		<authority name="生成API密钥对" uri="/user.act" cmd="createApiKey" roles="user" log="true" />
+		<authority name="更新API信息" uri="/user.act" cmd="updateApiKey" roles="user" log="true" />
+		<authority name="删除API信息" uri="/user.act" cmd="deleteApiKey" roles="user" log="true" />
+		<authority name="获取邀请链接" uri="/user.act" cmd="getUserInviter" roles="user" log="" />
+		<authority name="申请查看API详情" uri="/user.act" cmd="sendMobileByApiDetail" roles="user" log="" />
+		<authority name="查看API详情" uri="/user.act" cmd="getApiDetail" roles="user" log="" />
+		<authority name="获取全部API" uri="/user.act" cmd="getUserApi" roles="user" log=""/>
+	</module>
+	
+	<module name="注册渠道模块">
+		<authority name="邀请链接" uri="/register.act" cmd="inviter" roles="" log="" />
+		<authority name="邀请渠道" uri="/register.act" cmd="mark" roles="" log="" />
+	</module>
+	
+	<module name="分佣记录">
+		<authority name="获得分佣详情列表" uri="/commission.act" cmd="getDistribCommission" roles="user" log="false" />
+		<authority name="获得分佣统计" uri="/commission.act" cmd="getSumDistribCommission" roles="user" log="false"/>
+		<authority name="获得邀请用户" uri="/commission.act" cmd="getFirstChildren" roles="user" log="false"/>
+		<authority name="获取累计返佣" uri="/commission.act" cmd="getTotalCommission" roles="user" log="false" />
+		<authority name="获取返佣列表" uri="/commission.act" cmd="getUserDayCommission" roles="user" log="false" />
+	</module>
+	
+	<module name="充值">
+		<authority name="获取用户充值地址"  uri="/charge.act"  cmd="getChargeAddress" roles="user" log="false" />
+		<authority name="获取用户充值记录"  uri="/charge.act"  cmd="getChargeRecords" roles="user" log="false" />							
+	</module>
+	
+	<module name="电话反馈">
+		<authority name="保存反馈信息" uri="/feedBack.act" cmd="saveFeedBack" roles="" log="true" />
+	</module>
+	
+	<module name="星币">
+		<authority name="获取星币信息" uri="/starCoin.act" cmd="getStarCoin" roles="user" log="false" />
+		<authority name="获取分红信息" uri="/starCoin.act" cmd="getStarCoinShare" roles="user" log="false"/>
+	</module>
+	
+	<module name="提现">
+		<authority name="获取提现地址"  uri="/pickUp.act"  cmd="listPickUpAdress" roles="user" log="false" />
+		<authority name="获取单个提现地址详细信息"  uri="/pickUp.act"  cmd="getPickUpAdressById" roles="user" log="false" />	
+		<authority name="添加提现地址发送验证码"  uri="/pickUp.act"  cmd="applyPickUpMobileCode" roles="user" log="true" />	
+		<authority name="添加非安全提现地址"  uri="/pickUp.act"  cmd="addSimplePickUp" roles="user" log="true" />	
+		<authority name="获取安全提现地址"  uri="/pickUp.act"  cmd="addSaftyPickUpAdress" roles="user" log="true" />
+		<authority name="更新提现地址"  uri="/pickUp.act"  cmd="updatePickUpAdress" roles="user" log="true" />	
+		<authority name="删除提现地址"  uri="/pickUp.act"  cmd="deletePickUpAdress" roles="user" log="true" />
+		<authority name="申请提现时发送验证码"  uri="/pickUp.act"  cmd="sendPickUpMobileCode" roles="user" log="true" />
+		<authority name="申请使用普通地址进行提现"  uri="/pickUp.act"  cmd="applySimplePickUp" roles="user" log="true" />
+		<authority name="申请使用安全地址进行提现"  uri="/pickUp.act"  cmd="saftyPickUp" roles="user" log="true" />
+		<authority name="获取用户提现记录信息"  uri="/pickUp.act"  cmd="getWithDrawRecords" roles="user" log="false" />	
+		<authority name="获取用户单个提现记录信息"  uri="/pickUp.act"  cmd="getWithDrawApplyInfo" roles="user" log="false" />	
+		<authority name="撤销提现记录"  uri="/pickUp.act"  cmd="canclePickUp" roles="user" log="true" />			
+	</module>
+	
+	<module name="用户资产">
+		<authority name="用户主资产账号信息"  uri="/userFund.act"  cmd="getUserAssetInfo" roles="user" log="false" />					
+		<authority name="用户固定主资产"  uri="/userFund.act"  cmd="getUserFixAsset" roles="user" log="false" />					
+		<authority name="用户活动主资产"  uri="/userFund.act"  cmd="getUserActiveAsset" roles="user" log="false" />					
+		<authority name="币种总资产"  uri="/userFund.act"  cmd="getUsetFloatAsset" roles="user" log="false" />					
+		<authority name="子账号类型列表"  uri="/userFund.act"  cmd="getUserSubFundTypes" roles="" log="false" />					
+		<authority name="用户子账号信息"  uri="/userFund.act"  cmd="getUserSubFundInfo" roles="user" log="false" />					
+		<authority name="用户子账号固定资产"  uri="/userFund.act"  cmd="getUserFixSubFund" roles="user" log="false" />					
+		<authority name="用户子账号活动资产"  uri="/userFund.act"  cmd="getUserActiveSubFund" roles="user" log="false" />					
+		<authority name="用户子账号净资产"  uri="/userFund.act"  cmd="getUserNetSubFund" roles="user" log="false" />					
+		<authority name="用户子账号已用保证金"  uri="/userFund.act"  cmd="getUsedMargin" roles="user" log="false" />					
+		<authority name="用户子账号浮动盈亏"  uri="/userFund.act"  cmd="getUserFloatProfit" roles="user" log="false" />					
+		<authority name="向子账号转账"  uri="/userFund.act"  cmd="transferToSubAccount" roles="user" log="true" />					
+		<authority name="向主账号转账"  uri="/userFund.act"  cmd="transferToMainAcount" roles="user" log="true" />					
+		<authority name="获取转账信息列表"  uri="/userFund.act"  cmd="getFoundTranserRecords" roles="user" log="false" />					
+		<authority name="获取单个转账信息"  uri="/userFund.act"  cmd="getFoundTranserInfo" roles="user" log="false" />	
+	</module>	
+	
+	<module name="交易模块——比特币对人民币现货合约">
+		<authority name="买多" uri="/swap/btc2cny.act" cmd="placeBuyRiseOrder" roles="user" log="true" />
+		<authority name="买空" uri="/swap/btc2cny.act" cmd="placeBuyFallOrder" roles="user" log="true" />
+		<authority name="卖多" uri="/swap/btc2cny.act" cmd="placeSellRiseOrder" roles="user" log="true" />
+		<authority name="卖空" uri="/swap/btc2cny.act" cmd="placeSellFallOrder" roles="user" log="true" />
+		<authority name="撤单" uri="/swap/btc2cny.act" cmd="placeCancleOrder" roles="user" log="true" />
+		<authority name="撤销所有订单" uri="/swap/btc2cny.act" cmd="cancleAllOrders" roles="user" log="true" />
+		<authority name="获取未完成订单数量" uri="/swap/btc2cny.act" cmd="hasUnCompleteOrder" roles="user" log="false" />
+		<authority name="获取未完成订单" uri="/swap/btc2cny.act" cmd="getUnCompleteOrders" roles="user" log="false" />
+		<authority name="获取已完成订单" uri="/swap/btc2cny.act" cmd="getCompleteOrders" roles="user" log="false" />
+		<authority name="获取今日历史订单" uri="/swap/btc2cny.act" cmd="getTodayOrderInfo" roles="user" log="false" />
+		<authority name="获取过去历史订单" uri="/swap/btc2cny.act" cmd="getHistoryOrderInfo" roles="user" log="false" />
+		<authority name="获取爆仓订单" uri="/swap/btc2cny.act" cmd="getOutSpaceOrderInfo" roles="user" log="false" />
+		<authority name="获取持仓量信息" uri="/swap/btc2cny.act" cmd="getAllStoreInfo" roles="user" log="false" />
+		<authority name="获取当前持仓量信息" uri="/swap/btc2cny.act" cmd="getCurrentStoreInfo" roles="user" log="false" />
+		<authority name="获取历史K线数据" uri="/swap/btc2cny.act" cmd="getKLinesInfo" roles="" log="false" />
+		<authority name="获取历史K线收盘价" uri="/swap/btc2cny.act" cmd="getKLinesClose" roles="" log="false" />
+		<authority name="获取最新K线" uri="/swap/btc2cny.act" cmd="getNewKLineInfo" roles="" log="false" />
+		<authority name="获取深度信息" uri="/swap/btc2cny.act" cmd="getDeepenDatas" roles="" log="false" />
+		<authority name="获取深度信息（多）" uri="/swap/btc2cny.act" cmd="getDefaultDeepenDatas" roles="" log="false" />
+		<authority name="获取深度类型" uri="/swap/btc2cny.act" cmd="getDeepenTypes" roles="" log="false" />
+		<authority name="获取最新成交信息" uri="/swap/btc2cny.act" cmd="getRecentTradeRecords" roles="" log="false" />
+		<authority name="获取最新成交价信息" uri="/swap/btc2cny.act" cmd="getNewActualPrice" roles="" log="false" />
+		<authority name="获取合约基本信息" uri="/swap/btc2cny.act" cmd="getPublicInfo" roles="" log="false" />
+	</module>
+	
+	<module name="交易模块——比特币对美元现货合约">
+		<authority name="买多" uri="/swap/btc2usd.act" cmd="placeBuyRiseOrder" roles="user" log="true" />
+		<authority name="买空" uri="/swap/btc2usd.act" cmd="placeBuyFallOrder" roles="user" log="true" />
+		<authority name="卖多" uri="/swap/btc2usd.act" cmd="placeSellRiseOrder" roles="user" log="true" />
+		<authority name="卖空" uri="/swap/btc2usd.act" cmd="placeSellFallOrder" roles="user" log="true" />
+		<authority name="撤单" uri="/swap/btc2usd.act" cmd="placeCancleOrder" roles="user" log="true" />
+		<authority name="撤销所有订单" uri="/swap/btc2usd.act" cmd="cancleAllOrders" roles="user" log="true" />
+		<authority name="获取未完成订单数量" uri="/swap/btc2usd.act" cmd="hasUnCompleteOrder" roles="user" log="false" />
+		<authority name="获取未完成订单" uri="/swap/btc2usd.act" cmd="getUnCompleteOrders" roles="user" log="false" />
+		<authority name="获取已完成订单" uri="/swap/btc2usd.act" cmd="getCompleteOrders" roles="user" log="false" />
+		<authority name="获取今日历史订单" uri="/swap/btc2usd.act" cmd="getTodayOrderInfo" roles="user" log="false" />
+		<authority name="获取过去历史订单" uri="/swap/btc2usd.act" cmd="getHistoryOrderInfo" roles="user" log="false" />
+		<authority name="获取爆仓订单" uri="/swap/btc2usd.act" cmd="getOutSpaceOrderInfo" roles="user" log="false" />
+		<authority name="获取持仓量信息" uri="/swap/btc2usd.act" cmd="getAllStoreInfo" roles="user" log="false" />
+		<authority name="获取当前持仓量信息" uri="/swap/btc2usd.act" cmd="getCurrentStoreInfo" roles="user" log="false" />
+		<authority name="获取历史K线数据" uri="/swap/btc2usd.act" cmd="getKLinesInfo" roles="" log="false" />
+		<authority name="获取历史K线收盘价" uri="/swap/btc2usd.act" cmd="getKLinesClose" roles="" log="false" />
+		<authority name="获取最新K线" uri="/swap/btc2usd.act" cmd="getNewKLineInfo" roles="" log="false" />
+		<authority name="获取深度信息" uri="/swap/btc2usd.act" cmd="getDeepenDatas" roles="" log="false" />
+		<authority name="获取深度信息（多）" uri="/swap/btc2usd.act" cmd="getDefaultDeepenDatas" roles="" log="false" />
+		<authority name="获取深度类型" uri="/swap/btc2usd.act" cmd="getDeepenTypes" roles="" log="false" />
+		<authority name="获取最新成交信息" uri="/swap/btc2usd.act" cmd="getRecentTradeRecords" roles="" log="false" />
+		<authority name="获取最新成交价信息" uri="/swap/btc2usd.act" cmd="getNewActualPrice" roles="" log="false" />
+		<authority name="获取合约基本信息" uri="/swap/btc2usd.act" cmd="getPublicInfo" roles="" log="false" />
+	</module>
+	
+	<module name="交易模块——以太币对人民币现货合约">
+		<authority name="买多" uri="/swap/eth2cny.act" cmd="placeBuyRiseOrder" roles="user" log="true" />
+		<authority name="买空" uri="/swap/eth2cny.act" cmd="placeBuyFallOrder" roles="user" log="true" />
+		<authority name="卖多" uri="/swap/eth2cny.act" cmd="placeSellRiseOrder" roles="user" log="true" />
+		<authority name="卖空" uri="/swap/eth2cny.act" cmd="placeSellFallOrder" roles="user" log="true" />
+		<authority name="撤单" uri="/swap/eth2cny.act" cmd="placeCancleOrder" roles="user" log="true" />
+		<authority name="撤销所有订单" uri="/swap/eth2cny.act" cmd="cancleAllOrders" roles="user" log="true" />
+		<authority name="获取未完成订单数量" uri="/swap/eth2cny.act" cmd="hasUnCompleteOrder" roles="user" log="false" />
+		<authority name="获取未完成订单" uri="/swap/eth2cny.act" cmd="getUnCompleteOrders" roles="user" log="false" />
+		<authority name="获取已完成订单" uri="/swap/eth2cny.act" cmd="getCompleteOrders" roles="user" log="false" />
+		<authority name="获取今日历史订单" uri="/swap/eth2cny.act" cmd="getTodayOrderInfo" roles="user" log="false" />
+		<authority name="获取过去历史订单" uri="/swap/eth2cny.act" cmd="getHistoryOrderInfo" roles="user" log="false" />
+		<authority name="获取爆仓订单" uri="/swap/eth2cny.act" cmd="getOutSpaceOrderInfo" roles="user" log="false" />
+		<authority name="获取持仓量信息" uri="/swap/eth2cny.act" cmd="getAllStoreInfo" roles="user" log="false" />
+		<authority name="获取当前持仓量信息" uri="/swap/eth2cny.act" cmd="getCurrentStoreInfo" roles="user" log="false" />
+		<authority name="获取历史K线数据" uri="/swap/eth2cny.act" cmd="getKLinesInfo" roles="" log="false" />
+		<authority name="获取历史K线收盘价" uri="/swap/eth2cny.act" cmd="getKLinesClose" roles="" log="false" />
+		<authority name="获取最新K线" uri="/swap/eth2cny.act" cmd="getNewKLineInfo" roles="" log="false" />
+		<authority name="获取深度信息" uri="/swap/eth2cny.act" cmd="getDeepenDatas" roles="" log="false" />
+		<authority name="获取深度信息（多）" uri="/swap/eth2cny.act" cmd="getDefaultDeepenDatas" roles="" log="false" />
+		<authority name="获取深度类型" uri="/swap/eth2cny.act" cmd="getDeepenTypes" roles="" log="false" />
+		<authority name="获取最新成交信息" uri="/swap/eth2cny.act" cmd="getRecentTradeRecords" roles="" log="false" />
+		<authority name="获取最新成交价信息" uri="/swap/eth2cny.act" cmd="getNewActualPrice" roles="" log="false" />
+		<authority name="获取合约基本信息" uri="/swap/eth2cny.act" cmd="getPublicInfo" roles="" log="false" />
+	</module>
+	
+	<module name="交易模块——以太币对美元现货合约">
+		<authority name="买多" uri="/swap/eth2usd.act" cmd="placeBuyRiseOrder" roles="user" log="true" />
+		<authority name="买空" uri="/swap/eth2usd.act" cmd="placeBuyFallOrder" roles="user" log="true" />
+		<authority name="卖多" uri="/swap/eth2usd.act" cmd="placeSellRiseOrder" roles="user" log="true" />
+		<authority name="卖空" uri="/swap/eth2usd.act" cmd="placeSellFallOrder" roles="user" log="true" />
+		<authority name="撤单" uri="/swap/eth2usd.act" cmd="placeCancleOrder" roles="user" log="true" />
+		<authority name="撤销所有订单" uri="/swap/eth2usd.act" cmd="cancleAllOrders" roles="user" log="true" />
+		<authority name="获取未完成订单数量" uri="/swap/eth2usd.act" cmd="hasUnCompleteOrder" roles="user" log="false" />
+		<authority name="获取未完成订单" uri="/swap/eth2usd.act" cmd="getUnCompleteOrders" roles="user" log="false" />
+		<authority name="获取已完成订单" uri="/swap/eth2usd.act" cmd="getCompleteOrders" roles="user" log="false" />
+		<authority name="获取今日历史订单" uri="/swap/eth2usd.act" cmd="getTodayOrderInfo" roles="user" log="false" />
+		<authority name="获取过去历史订单" uri="/swap/eth2usd.act" cmd="getHistoryOrderInfo" roles="user" log="false" />
+		<authority name="获取爆仓订单" uri="/swap/eth2usd.act" cmd="getOutSpaceOrderInfo" roles="user" log="false" />
+		<authority name="获取持仓量信息" uri="/swap/eth2usd.act" cmd="getAllStoreInfo" roles="user" log="false" />
+		<authority name="获取当前持仓量信息" uri="/swap/eth2usd.act" cmd="getCurrentStoreInfo" roles="user" log="false" />
+		<authority name="获取历史K线数据" uri="/swap/eth2usd.act" cmd="getKLinesInfo" roles="" log="false" />
+		<authority name="获取历史K线收盘价" uri="/swap/eth2usd.act" cmd="getKLinesClose" roles="" log="false" />
+		<authority name="获取最新K线" uri="/swap/eth2usd.act" cmd="getNewKLineInfo" roles="" log="false" />
+		<authority name="获取深度信息" uri="/swap/eth2usd.act" cmd="getDeepenDatas" roles="" log="false" />
+		<authority name="获取深度信息（多）" uri="/swap/eth2usd.act" cmd="getDefaultDeepenDatas" roles="" log="false" />
+		<authority name="获取深度类型" uri="/swap/eth2usd.act" cmd="getDeepenTypes" roles="" log="false" />
+		<authority name="获取最新成交信息" uri="/swap/eth2usd.act" cmd="getRecentTradeRecords" roles="" log="false" />
+		<authority name="获取最新成交价信息" uri="/swap/eth2usd.act" cmd="getNewActualPrice" roles="" log="false" />
+		<authority name="获取合约基本信息" uri="/swap/eth2usd.act" cmd="getPublicInfo" roles="" log="false" />
+	</module>
+	
+	<module name="交易模块——莱特币对人民币现货合约">
+		<authority name="买多" uri="/swap/ltc2cny.act" cmd="placeBuyRiseOrder" roles="user" log="true" />
+		<authority name="买空" uri="/swap/ltc2cny.act" cmd="placeBuyFallOrder" roles="user" log="true" />
+		<authority name="卖多" uri="/swap/ltc2cny.act" cmd="placeSellRiseOrder" roles="user" log="true" />
+		<authority name="卖空" uri="/swap/ltc2cny.act" cmd="placeSellFallOrder" roles="user" log="true" />
+		<authority name="撤单" uri="/swap/ltc2cny.act" cmd="placeCancleOrder" roles="user" log="true" />
+		<authority name="撤销所有订单" uri="/swap/ltc2cny.act" cmd="cancleAllOrders" roles="user" log="true" />
+		<authority name="获取未完成订单数量" uri="/swap/ltc2cny.act" cmd="hasUnCompleteOrder" roles="user" log="false" />
+		<authority name="获取未完成订单" uri="/swap/ltc2cny.act" cmd="getUnCompleteOrders" roles="user" log="false" />
+		<authority name="获取已完成订单" uri="/swap/ltc2cny.act" cmd="getCompleteOrders" roles="user" log="false" />
+		<authority name="获取今日历史订单" uri="/swap/ltc2cny.act" cmd="getTodayOrderInfo" roles="user" log="false" />
+		<authority name="获取过去历史订单" uri="/swap/ltc2cny.act" cmd="getHistoryOrderInfo" roles="user" log="false" />
+		<authority name="获取爆仓订单" uri="/swap/ltc2cny.act" cmd="getOutSpaceOrderInfo" roles="user" log="false" />
+		<authority name="获取持仓量信息" uri="/swap/ltc2cny.act" cmd="getAllStoreInfo" roles="user" log="false" />
+		<authority name="获取当前持仓量信息" uri="/swap/ltc2cny.act" cmd="getCurrentStoreInfo" roles="user" log="false" />
+		<authority name="获取历史K线数据" uri="/swap/ltc2cny.act" cmd="getKLinesInfo" roles="" log="false" />
+		<authority name="获取历史K线收盘价" uri="/swap/ltc2cny.act" cmd="getKLinesClose" roles="" log="false" />
+		<authority name="获取最新K线" uri="/swap/ltc2cny.act" cmd="getNewKLineInfo" roles="" log="false" />
+		<authority name="获取深度信息" uri="/swap/ltc2cny.act" cmd="getDeepenDatas" roles="" log="false" />
+		<authority name="获取深度信息（多）" uri="/swap/ltc2cny.act" cmd="getDefaultDeepenDatas" roles="" log="false" />
+		<authority name="获取深度类型" uri="/swap/ltc2cny.act" cmd="getDeepenTypes" roles="" log="false" />
+		<authority name="获取最新成交信息" uri="/swap/ltc2cny.act" cmd="getRecentTradeRecords" roles="" log="false" />
+		<authority name="获取最新成交价信息" uri="/swap/ltc2cny.act" cmd="getNewActualPrice" roles="" log="false" />
+		<authority name="获取合约基本信息" uri="/swap/ltc2cny.act" cmd="getPublicInfo" roles="" log="false" />
+	</module>
+	
+	<module name="交易模块——莱特币对美元现货合约">
+		<authority name="买多" uri="/swap/ltc2usd.act" cmd="placeBuyRiseOrder" roles="user" log="true" />
+		<authority name="买空" uri="/swap/ltc2usd.act" cmd="placeBuyFallOrder" roles="user" log="true" />
+		<authority name="卖多" uri="/swap/ltc2usd.act" cmd="placeSellRiseOrder" roles="user" log="true" />
+		<authority name="卖空" uri="/swap/ltc2usd.act" cmd="placeSellFallOrder" roles="user" log="true" />
+		<authority name="撤单" uri="/swap/ltc2usd.act" cmd="placeCancleOrder" roles="user" log="true" />
+		<authority name="撤销所有订单" uri="/swap/ltc2usd.act" cmd="cancleAllOrders" roles="user" log="true" />
+		<authority name="获取未完成订单数量" uri="/swap/ltc2usd.act" cmd="hasUnCompleteOrder" roles="user" log="false" />
+		<authority name="获取未完成订单" uri="/swap/ltc2usd.act" cmd="getUnCompleteOrders" roles="user" log="false" />
+		<authority name="获取已完成订单" uri="/swap/ltc2usd.act" cmd="getCompleteOrders" roles="user" log="false" />
+		<authority name="获取今日历史订单" uri="/swap/ltc2usd.act" cmd="getTodayOrderInfo" roles="user" log="false" />
+		<authority name="获取过去历史订单" uri="/swap/ltc2usd.act" cmd="getHistoryOrderInfo" roles="user" log="false" />
+		<authority name="获取爆仓订单" uri="/swap/ltc2usd.act" cmd="getOutSpaceOrderInfo" roles="user" log="false" />
+		<authority name="获取持仓量信息" uri="/swap/ltc2usd.act" cmd="getAllStoreInfo" roles="user" log="false" />
+		<authority name="获取当前持仓量信息" uri="/swap/ltc2usd.act" cmd="getCurrentStoreInfo" roles="user" log="false" />
+		<authority name="获取历史K线数据" uri="/swap/ltc2usd.act" cmd="getKLinesInfo" roles="" log="false" />
+		<authority name="获取历史K线收盘价" uri="/swap/ltc2usd.act" cmd="getKLinesClose" roles="" log="false" />
+		<authority name="获取最新K线" uri="/swap/ltc2usd.act" cmd="getNewKLineInfo" roles="" log="false" />
+		<authority name="获取深度信息" uri="/swap/ltc2usd.act" cmd="getDeepenDatas" roles="" log="false" />
+		<authority name="获取深度信息（多）" uri="/swap/ltc2usd.act" cmd="getDefaultDeepenDatas" roles="" log="false" />
+		<authority name="获取深度类型" uri="/swap/ltc2usd.act" cmd="getDeepenTypes" roles="" log="false" />
+		<authority name="获取最新成交信息" uri="/swap/ltc2usd.act" cmd="getRecentTradeRecords" roles="" log="false" />
+		<authority name="获取最新成交价信息" uri="/swap/ltc2usd.act" cmd="getNewActualPrice" roles="" log="false" />
+		<authority name="获取合约基本信息" uri="/swap/ltc2usd.act" cmd="getPublicInfo" roles="" log="false" />
+	</module>
+	
+	<module name="交易模块——ETC对人民币现货合约">
+		<authority name="买多" uri="/swap/etc2cny.act" cmd="placeBuyRiseOrder" roles="user" log="true" />
+		<authority name="买空" uri="/swap/etc2cny.act" cmd="placeBuyFallOrder" roles="user" log="true" />
+		<authority name="卖多" uri="/swap/etc2cny.act" cmd="placeSellRiseOrder" roles="user" log="true" />
+		<authority name="卖空" uri="/swap/etc2cny.act" cmd="placeSellFallOrder" roles="user" log="true" />
+		<authority name="撤单" uri="/swap/etc2cny.act" cmd="placeCancleOrder" roles="user" log="true" />
+		<authority name="撤销所有订单" uri="/swap/etc2cny.act" cmd="cancleAllOrders" roles="user" log="true" />
+		<authority name="获取未完成订单数量" uri="/swap/etc2cny.act" cmd="hasUnCompleteOrder" roles="user" log="false" />
+		<authority name="获取未完成订单" uri="/swap/etc2cny.act" cmd="getUnCompleteOrders" roles="user" log="false" />
+		<authority name="获取已完成订单" uri="/swap/etc2cny.act" cmd="getCompleteOrders" roles="user" log="false" />
+		<authority name="获取今日历史订单" uri="/swap/etc2cny.act" cmd="getTodayOrderInfo" roles="user" log="false" />
+		<authority name="获取过去历史订单" uri="/swap/etc2cny.act" cmd="getHistoryOrderInfo" roles="user" log="false" />
+		<authority name="获取爆仓订单" uri="/swap/etc2cny.act" cmd="getOutSpaceOrderInfo" roles="user" log="false" />
+		<authority name="获取持仓量信息" uri="/swap/etc2cny.act" cmd="getAllStoreInfo" roles="user" log="false" />
+		<authority name="获取当前持仓量信息" uri="/swap/etc2cny.act" cmd="getCurrentStoreInfo" roles="user" log="false" />
+		<authority name="获取历史K线数据" uri="/swap/etc2cny.act" cmd="getKLinesInfo" roles="" log="false" />
+		<authority name="获取历史K线收盘价" uri="/swap/etc2cny.act" cmd="getKLinesClose" roles="" log="false" />
+		<authority name="获取最新K线" uri="/swap/etc2cny.act" cmd="getNewKLineInfo" roles="" log="false" />
+		<authority name="获取深度信息" uri="/swap/etc2cny.act" cmd="getDeepenDatas" roles="" log="false" />
+		<authority name="获取深度信息（多）" uri="/swap/etc2cny.act" cmd="getDefaultDeepenDatas" roles="" log="false" />
+		<authority name="获取深度类型" uri="/swap/etc2cny.act" cmd="getDeepenTypes" roles="" log="false" />
+		<authority name="获取最新成交信息" uri="/swap/etc2cny.act" cmd="getRecentTradeRecords" roles="" log="false" />
+		<authority name="获取最新成交价信息" uri="/swap/etc2cny.act" cmd="getNewActualPrice" roles="" log="false" />
+		<authority name="获取合约基本信息" uri="/swap/etc2cny.act" cmd="getPublicInfo" roles="" log="false" />
+	</module>
+	
+	<module name="交易模块——ETC对美元现货合约">
+		<authority name="买多" uri="/swap/etc2usd.act" cmd="placeBuyRiseOrder" roles="user" log="true" />
+		<authority name="买空" uri="/swap/etc2usd.act" cmd="placeBuyFallOrder" roles="user" log="true" />
+		<authority name="卖多" uri="/swap/etc2usd.act" cmd="placeSellRiseOrder" roles="user" log="true" />
+		<authority name="卖空" uri="/swap/etc2usd.act" cmd="placeSellFallOrder" roles="user" log="true" />
+		<authority name="撤单" uri="/swap/etc2usd.act" cmd="placeCancleOrder" roles="user" log="true" />
+		<authority name="撤销所有订单" uri="/swap/etc2usd.act" cmd="cancleAllOrders" roles="user" log="true" />
+		<authority name="获取未完成订单数量" uri="/swap/etc2usd.act" cmd="hasUnCompleteOrder" roles="user" log="false" />
+		<authority name="获取未完成订单" uri="/swap/etc2usd.act" cmd="getUnCompleteOrders" roles="user" log="false" />
+		<authority name="获取已完成订单" uri="/swap/etc2usd.act" cmd="getCompleteOrders" roles="user" log="false" />
+		<authority name="获取今日历史订单" uri="/swap/etc2usd.act" cmd="getTodayOrderInfo" roles="user" log="false" />
+		<authority name="获取过去历史订单" uri="/swap/etc2usd.act" cmd="getHistoryOrderInfo" roles="user" log="false" />
+		<authority name="获取爆仓订单" uri="/swap/etc2usd.act" cmd="getOutSpaceOrderInfo" roles="user" log="false" />
+		<authority name="获取持仓量信息" uri="/swap/etc2usd.act" cmd="getAllStoreInfo" roles="user" log="false" />
+		<authority name="获取当前持仓量信息" uri="/swap/etc2usd.act" cmd="getCurrentStoreInfo" roles="user" log="false" />
+		<authority name="获取历史K线数据" uri="/swap/etc2usd.act" cmd="getKLinesInfo" roles="" log="false" />
+		<authority name="获取历史K线收盘价" uri="/swap/etc2usd.act" cmd="getKLinesClose" roles="" log="false" />
+		<authority name="获取最新K线" uri="/swap/etc2usd.act" cmd="getNewKLineInfo" roles="" log="false" />
+		<authority name="获取深度信息" uri="/swap/etc2usd.act" cmd="getDeepenDatas" roles="" log="false" />
+		<authority name="获取深度信息（多）" uri="/swap/etc2usd.act" cmd="getDefaultDeepenDatas" roles="" log="false" />
+		<authority name="获取深度类型" uri="/swap/etc2usd.act" cmd="getDeepenTypes" roles="" log="false" />
+		<authority name="获取最新成交信息" uri="/swap/etc2usd.act" cmd="getRecentTradeRecords" roles="" log="false" />
+		<authority name="获取最新成交价信息" uri="/swap/etc2usd.act" cmd="getNewActualPrice" roles="" log="false" />
+		<authority name="获取合约基本信息" uri="/swap/etc2usd.act" cmd="getPublicInfo" roles="" log="false" />
+	</module>
+	
+	<module name="交易模块——BCC对人民币现货合约">
+		<authority name="买多" uri="/swap/bcc2cny.act" cmd="placeBuyRiseOrder" roles="user" log="true" />
+		<authority name="买空" uri="/swap/bcc2cny.act" cmd="placeBuyFallOrder" roles="user" log="true" />
+		<authority name="卖多" uri="/swap/bcc2cny.act" cmd="placeSellRiseOrder" roles="user" log="true" />
+		<authority name="卖空" uri="/swap/bcc2cny.act" cmd="placeSellFallOrder" roles="user" log="true" />
+		<authority name="撤单" uri="/swap/bcc2cny.act" cmd="placeCancleOrder" roles="user" log="true" />
+		<authority name="撤销所有订单" uri="/swap/bcc2cny.act" cmd="cancleAllOrders" roles="user" log="true" />
+		<authority name="获取未完成订单数量" uri="/swap/bcc2cny.act" cmd="hasUnCompleteOrder" roles="user" log="false" />
+		<authority name="获取未完成订单" uri="/swap/bcc2cny.act" cmd="getUnCompleteOrders" roles="user" log="false" />
+		<authority name="获取已完成订单" uri="/swap/bcc2cny.act" cmd="getCompleteOrders" roles="user" log="false" />
+		<authority name="获取今日历史订单" uri="/swap/bcc2cny.act" cmd="getTodayOrderInfo" roles="user" log="false" />
+		<authority name="获取过去历史订单" uri="/swap/bcc2cny.act" cmd="getHistoryOrderInfo" roles="user" log="false" />
+		<authority name="获取爆仓订单" uri="/swap/bcc2cny.act" cmd="getOutSpaceOrderInfo" roles="user" log="false" />
+		<authority name="获取持仓量信息" uri="/swap/bcc2cny.act" cmd="getAllStoreInfo" roles="user" log="false" />
+		<authority name="获取当前持仓量信息" uri="/swap/bcc2cny.act" cmd="getCurrentStoreInfo" roles="user" log="false" />
+		<authority name="获取历史K线数据" uri="/swap/bcc2cny.act" cmd="getKLinesInfo" roles="" log="false" />
+		<authority name="获取历史K线收盘价" uri="/swap/bcc2cny.act" cmd="getKLinesClose" roles="" log="false" />
+		<authority name="获取最新K线" uri="/swap/bcc2cny.act" cmd="getNewKLineInfo" roles="" log="false" />
+		<authority name="获取深度信息" uri="/swap/bcc2cny.act" cmd="getDeepenDatas" roles="" log="false" />
+		<authority name="获取深度信息（多）" uri="/swap/bcc2cny.act" cmd="getDefaultDeepenDatas" roles="" log="false" />
+		<authority name="获取深度类型" uri="/swap/bcc2cny.act" cmd="getDeepenTypes" roles="" log="false" />
+		<authority name="获取最新成交信息" uri="/swap/bcc2cny.act" cmd="getRecentTradeRecords" roles="" log="false" />
+		<authority name="获取最新成交价信息" uri="/swap/bcc2cny.act" cmd="getNewActualPrice" roles="" log="false" />
+		<authority name="获取合约基本信息" uri="/swap/bcc2cny.act" cmd="getPublicInfo" roles="" log="false" />
+	</module>
+	
+	<module name="交易模块——BCC对美元现货合约">
+		<authority name="买多" uri="/swap/bcc2usd.act" cmd="placeBuyRiseOrder" roles="user" log="true" />
+		<authority name="买空" uri="/swap/bcc2usd.act" cmd="placeBuyFallOrder" roles="user" log="true" />
+		<authority name="卖多" uri="/swap/bcc2usd.act" cmd="placeSellRiseOrder" roles="user" log="true" />
+		<authority name="卖空" uri="/swap/bcc2usd.act" cmd="placeSellFallOrder" roles="user" log="true" />
+		<authority name="撤单" uri="/swap/bcc2usd.act" cmd="placeCancleOrder" roles="user" log="true" />
+		<authority name="撤销所有订单" uri="/swap/bcc2usd.act" cmd="cancleAllOrders" roles="user" log="true" />
+		<authority name="获取未完成订单数量" uri="/swap/bcc2usd.act" cmd="hasUnCompleteOrder" roles="user" log="false" />
+		<authority name="获取未完成订单" uri="/swap/bcc2usd.act" cmd="getUnCompleteOrders" roles="user" log="false" />
+		<authority name="获取已完成订单" uri="/swap/bcc2usd.act" cmd="getCompleteOrders" roles="user" log="false" />
+		<authority name="获取今日历史订单" uri="/swap/bcc2usd.act" cmd="getTodayOrderInfo" roles="user" log="false" />
+		<authority name="获取过去历史订单" uri="/swap/bcc2usd.act" cmd="getHistoryOrderInfo" roles="user" log="false" />
+		<authority name="获取爆仓订单" uri="/swap/bcc2usd.act" cmd="getOutSpaceOrderInfo" roles="user" log="false" />
+		<authority name="获取持仓量信息" uri="/swap/bcc2usd.act" cmd="getAllStoreInfo" roles="user" log="false" />
+		<authority name="获取当前持仓量信息" uri="/swap/bcc2usd.act" cmd="getCurrentStoreInfo" roles="user" log="false" />
+		<authority name="获取历史K线数据" uri="/swap/bcc2usd.act" cmd="getKLinesInfo" roles="" log="false" />
+		<authority name="获取历史K线收盘价" uri="/swap/bcc2usd.act" cmd="getKLinesClose" roles="" log="false" />
+		<authority name="获取最新K线" uri="/swap/bcc2usd.act" cmd="getNewKLineInfo" roles="" log="false" />
+		<authority name="获取深度信息" uri="/swap/bcc2usd.act" cmd="getDeepenDatas" roles="" log="false" />
+		<authority name="获取深度信息（多）" uri="/swap/bcc2usd.act" cmd="getDefaultDeepenDatas" roles="" log="false" />
+		<authority name="获取深度类型" uri="/swap/bcc2usd.act" cmd="getDeepenTypes" roles="" log="false" />
+		<authority name="获取最新成交信息" uri="/swap/bcc2usd.act" cmd="getRecentTradeRecords" roles="" log="false" />
+		<authority name="获取最新成交价信息" uri="/swap/bcc2usd.act" cmd="getNewActualPrice" roles="" log="false" />
+		<authority name="获取合约基本信息" uri="/swap/bcc2usd.act" cmd="getPublicInfo" roles="" log="false" />
+	</module>
+	
+	<module name="币币交易模块">
+		<authority name="买入" uri="/cointrade.act" cmd="placeBuyOrder" roles="user" log="true" />
+		<authority name="卖出" uri="/cointrade.act" cmd="placeSellOrder" roles="user" log="true" />
+		<authority name="撤单" uri="/cointrade.act" cmd="cancelOrder" roles="user" log="true" />
+		<authority name="撤销所有订单" uri="/cointrade.act" cmd="cancleAllOrders" roles="user" log="true" />
+		<authority name="获取未完成订单数量" uri="/cointrade.act" cmd="hasUnCompleteOrder" roles="user" log="false" />
+		<authority name="获取未完成订单" uri="/cointrade.act" cmd="getUnCompleteOrders" roles="user" log="false" />
+		<authority name="获取已完成订单" uri="/cointrade.act" cmd="getCompleteOrders" roles="user" log="false" />
+		<authority name="获取今日历史订单" uri="/cointrade.act" cmd="getTodayOrderInfo" roles="user" log="false" />
+		<authority name="获取过去历史订单" uri="/cointrade.act" cmd="getHistoryOrderInfo" roles="user" log="false" />
+		<authority name="获取历史K线数据" uri="/cointrade.act" cmd="getKLinesInfo" roles="" log="false" />
+		<authority name="获取最新K线" uri="/cointrade.act" cmd="getNewKLineInfo" roles="" log="false" />
+		<authority name="获取深度信息（多）" uri="/cointrade.act" cmd="getDefaultDeepenDatas" roles="" log="false" />
+		<authority name="获取最新成交信息" uri="/cointrade.act" cmd="getRecentTradeRecords" roles="" log="false" />
+		<authority name="获取最新成交价信息" uri="/cointrade.act" cmd="getNewActualPrice" roles="" log="false" />
+	</module>
+	
+	<module name="币种分叉">
+		<authority name="获取分叉状态" uri="/coinfork.act" cmd="getForkStatus" roles="user" log="false" />
+		<authority name="获取最大拆分数量" uri="/coinfork.act" cmd="getMaxSplitCoin" roles="user" log="false" />
+		<authority name="获取最大合并数量" uri="/coinfork.act" cmd="getMaxMergeCoin" roles="user" log="false" />
+		<authority name="获取平台最新拆分记录" uri="/coinfork.act" cmd="getLastForkRecords" roles="user" log="false" />
+		<authority name="获取用户拆分记录" uri="/coinfork.act" cmd="getUserForkRecords" roles="user" log="false" />
+		<authority name="拆分分叉币" uri="/coinfork.act" cmd="splitCoinFork" roles="user" log="true" />
+		<authority name="合并分叉币" uri="/coinfork.act" cmd="mergeCoinFork" roles="user" log="true" />
+	</module>
+	
+</system>
